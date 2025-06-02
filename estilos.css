@@ -28,9 +28,18 @@ html {
   height: 100px;
 }
 body {
-  font-family: var(--fuentePrincipal);
+  font-family: monospace;
   background-color: #272623;
   font-size: 62.5%;
+}
+h1 {
+  text-align: center;
+  margin: 1rem auto;
+  color: #ecf0f1;
+  font-size: 1.8rem;
+  max-width: 30rem;
+  width: auto;
+  letter-spacing: 2px;
 }
 .contenedor {
   border-top-left-radius: 25px;
@@ -45,6 +54,7 @@ body {
   border-right: 5px solid rgb(55, 0, 255);
   border-bottom: linear-gradient(to right, #f91616, blue);
 }
+
 h3 {
   border-top: 3px solid linear-gradient(to right, #f91616, blue);
   letter-spacing: 5px;
@@ -61,7 +71,7 @@ h3 {
   overflow: hidden;
 }
 h3::after {
-  content: "Calculadora de IMC";
+  content: "Pruebame!";
   position: absolute;
   top: 0;
   left: -100%;
@@ -84,29 +94,41 @@ h3:hover::after {
   gap: 15px;
 }
 label {
+  width: 70%;
+  margin: auto;
+  box-shadow: 0px 3px 1px 1px rgb(0, 0, 0);
+  padding: 5px;
+  font-family: monospace;
   color: #eee;
   display: block;
   font-size: 18px;
-  letter-spacing: 4px;
   margin-bottom: 15px;
   text-align: center;
+  border-radius: 5px;
 }
 input {
+  margin-top: 1rem;
+  text-align: center;
   width: 14rem;
-  max-width: auto;
-  text-align: end;
   color: white;
   border: none;
   background: transparent;
   padding: 10px;
   border-bottom: 1px solid grey;
+  max-height: 30px;
+}
+input:invalid {
+    border-bottom: 3px solid red;
+
+}
+input:valid{ 
+    border-bottom: 3px solid green;
 }
 input:focus {
   border-bottom: unset;
   border: none;
   outline: none; /*quitar linea de defecto de inputs*/
-  border-left: 4px solid #4369f3;
-  border-right: 2px solid #f91616;
+  border-bottom: 3px solid grey;
 }
 input::placeholder {
   text-align: center;
@@ -128,8 +150,8 @@ input::placeholder {
   color: #000;
   cursor: pointer;
   font-size: 20px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0px 3px 2px 1px rgb(0, 0, 0);
 }
 button {
   position: relative;
@@ -150,11 +172,10 @@ button:hover::after {
   left: 100%;
 }
 button:focus {
-  outline: none;
   border: none;
   border-right: 3px solid whitesmoke;
   border-left: 3px solid whitesmoke;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 button:active {
   border: medium;
@@ -175,6 +196,22 @@ section {
   color: rgb(239, 239, 239);
   letter-spacing: 2px;
 }
+
+a {
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  margin: 5px auto;
+  font-size: 1rem;
+  color: #eee;
+    transition:  transform ease 1s;
+
+}
+a:hover {
+  transform: scale(1.2);
+  transition:  transform ease 1s;
+  letter-spacing: 5px;
+}
 #result {
   font-weight: bold;
   text-align: center;
@@ -183,42 +220,36 @@ section {
   margin-top: 45px;
   padding: 5px;
   color: rgb(255, 245, 245);
-  font-size: 1.4rem;
-  box-shadow: 0px 0px 4px 1px black;
-  width: auto;
-  border-bottom: 2px solid rgb(73, 65, 65);
-
+  font-size: 1.2rem;
 }
 .contendor_imagen-resultado {
-  width: 16rem;
-  height: 15rem;
-}
-.bgimagen {
-  width: 15rem;
+  width: 13rem;
   height: auto;
+  max-height: 15rem;
+  object-fit: contain;
+  /* aspect-ratio: 2; */
 }
-.imagencita {
-  border: 3px solid rgb(0, 0, 0);
-  border-radius: 15px;
+img {
   width: 100%;
-  max-height: 200px;
+  border-radius: 5px;
+
+  height: 100%;
 }
 .are_result {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 30rem;
+  grid-template-columns: 50% 50%;
+  width: 95%;
   padding: 1rem;
   margin: 1rem auto;
-  height: 19rem;
+  height: 20rem;
   gap: 10px;
-  border-radius: 15px;
   box-shadow: 0px 0px 4px 2px black;
 }
 .resultado {
-  box-shadow: 0px 0px 4px 2px black;
+  box-shadow: 3px 2px 3px 1px black;
+  font-family: monospace;
   width: 13rem;
-  height: 12.2rem;
-
+  height: auto;
 }
 .resultado h1 {
   color: black;
@@ -226,14 +257,12 @@ section {
   letter-spacing: 2px;
 }
 .resultado h2 {
-  letter-spacing: 4px;
-  box-shadow: 0px 4px 1px black;
+  font-family: monospace;
+  font-weight: bold;
   padding: 10px;
-  border-radius: 10px;
   width: auto;
   margin: 10px auto;
   font-size: 20px;
-
 }
 /* Investigar nuevas propiedades
 position
@@ -256,25 +285,7 @@ top: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 4px;
 }
-.author::after {
-  text-align: center;
-  content: "Creado por LuisD3v";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  transform: skewX(-20deg);
-  transition: left 0.5s;
-  transition: ease-out 5s;
-  font-size: 1.5rem;
-  color: #eee;
-}
-.author:hover::after {
-  left: 100%;
-  transition: ease 3s;
-}
+
 @media (max-width: 45rem) {
   .result_title {
     text-align: center;
@@ -301,23 +312,19 @@ top: 0;
     font-size: 1.5rem;
   }
   input {
-    font-size: 1.4rem;
-    margin: 1rem auto 3rem 1.3rem;
-    width: 90%;
-    border: 3px solid #eee;
     padding: 15px;
-    border-top: none;
 
-    border-radius: 5px;
+    font-size: 1.4rem;
+    margin: 2.5rem auto 3rem 1.3rem;
+    width: 90%;
+    height: 25px;
+    border-left: 3px solid red;
+    border-right: 3px solid red;
   }
   input:focus {
-    border-bottom: unset;
-    border: none;
     outline: none; /*quitar linea de defecto de inputs*/
-    border-left: 4px solid #4369f3;
-    border-right: 4px solid #f91616;
+
     border-radius: unset;
-    text-transform: capitalize;
   }
   input::placeholder {
     letter-spacing: 3px;
@@ -325,21 +332,19 @@ top: 0;
     font-size: 20px;
   }
   .resultado {
-    width: 90%;
+    box-shadow: unset;
+    width: 95%;
   }
   .contendor_imagen-resultado {
     height: auto;
   }
   .imagencita {
-    box-shadow: 10px 10px 10px black;
     border: none;
   }
   .boton {
     width: 100%;
   }
   #result {
-    border-left: 2px solid rgb(255, 255, 255);
-    border-right: 2px solid rgb(255, 255, 255);
     width: 90%;
-}
+  }
 }
